@@ -8,8 +8,6 @@ endif
 call plug#begin('~/.vim/plugged')
 
 Plug 'itchyny/lightline.vim'
-Plug '/usr/bin/fzf'
-Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'dag/vim-fish'
@@ -40,8 +38,12 @@ set path+=**
 set wildignore+=**/build/**
 set wildmenu
 
+" silver searcher via ack
+let g:ackprg = 'ag --vimgrep --ignore-dir build'
+
 " trailing space intentional
 nnoremap ,f :find 
+nnoremap ,g :Ack 
 
 set tabstop=4
 set shiftwidth=4
@@ -68,7 +70,6 @@ if &diff
     highlight DiffDelete cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
     highlight DiffChange cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
     highlight DiffText   cterm=bold ctermfg=10 ctermbg=88 gui=none guifg=bg guibg=Red
-    " set diffopt+=iwhite
 endif
 
 " stop having to press SHIFT
